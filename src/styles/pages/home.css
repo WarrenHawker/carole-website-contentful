@@ -8,7 +8,6 @@
 }
 
 .home-page h1 {
-    /* font-size: 96px; */
     font-size: clamp(48px, 3vw, 96px);
     font-weight: 400;
     margin: 0;
@@ -19,8 +18,7 @@
     padding-left: 0.25em;
     padding-bottom: 1.3em;
     margin-bottom: 2em;
-
-
+    margin-top: 0.5em;
 }
 
 .home-page h2 {
@@ -30,7 +28,6 @@
     font-weight: 700;
     font-size: clamp(30px, 2vw, 40px);
     margin: 0;
-
 }
 
 .home-page p {
@@ -77,6 +74,15 @@
    text-align: center;
    font-size: clamp(16px, 1.5vw, 24px);
    margin: 0;
+}
+
+.read-more {
+    color: #C8A2C8;
+    text-decoration: none;
+}
+
+.read-more:hover, .read-more:focus, .CTA-button p:hover, .CTA-button p:focus {
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 900px) {

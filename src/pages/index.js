@@ -37,10 +37,13 @@ const Home = ({ artwork }) => {
         experienced and been inspired by much diverse art and culture. Without
         any formal art school training, I have always loved colour and how
         different artists have achieved textured multicoloured surfaces,
-        particularly Sir Frank Bowling RA.
+        particularly Sir Frank Bowling RA.{' '}
+        <Link href='/about' className='read-more'>
+          Read More...
+        </Link>
       </p>
-      <Link href='' className='CTA-button'>
-        <p>Buy my work</p>
+      <Link href='/art' className='CTA-button'>
+        <p>View my work</p>
       </Link>
     </div>
   );
