@@ -1,7 +1,25 @@
+@import url(./components/header.css);
+@import url(./pages/home.css);
+@import url('https://fonts.googleapis.com/css2?family=GFS+Didot&family=PT+Serif:wght@700&family=Source+Sans+Pro&display=swap');
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
+img {
+    display: block;
+    width: 100%;
+    margin: auto;
+}
+
+.layout{
+    background-color: #ffffff;
+}
+
 body {
     margin: 0;
+}
+
+main {
+    background-color: #f4f4f4;
 }

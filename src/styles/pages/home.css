@@ -1,0 +1,127 @@
+.home-page {
+    display: grid;
+    padding: 2em 4em;
+    max-width: 1500px;
+    margin: auto;
+    grid-template-columns: repeat(12, 8.33%);
+    grid-template-rows: repeat(6, 16.6% );
+}
+
+.home-page h1 {
+    /* font-size: 96px; */
+    font-size: clamp(48px, 3vw, 96px);
+    font-weight: 400;
+    margin: 0;
+    font-family: 'GFS Didot', serif;
+    background-color: #C8A2C8;
+    color: #000000;
+    grid-column: 5 / 13;
+    padding-left: 0.25em;
+    padding-bottom: 1.3em;
+    margin-bottom: 2em;
+
+
+}
+
+.home-page h2 {
+    font-family: 'PT Serif', serif;
+    color: #FBBB62;
+    grid-column: 5 / 13;
+    font-weight: 700;
+    font-size: clamp(30px, 2vw, 40px);
+    margin: 0;
+
+}
+
+.home-page p {
+    font-family: 'Source Sans Pro', sans-serif;  
+    font-size: clamp(16px, 1.5vw, 24px);
+    margin: 0;
+    grid-column: 8 / 13;
+    margin-left: 1em;
+}
+
+.profile-pic, .featured-pic {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.profile-pic {
+    grid-column: 1 / 4;
+    grid-row: 1 / 5;
+}
+
+.featured-pic {
+    grid-column: 4 / 8;
+    grid-row: 3 / 7;
+    padding-left: 0.5em;
+}
+
+.home-page .CTA-button {
+    grid-column: 8 / 10;
+    grid-row: 5 / 6;
+    background-color: #FBBB62;
+    text-decoration: none;
+    color: #000000;
+    padding-top: 0.5em;
+    height: 50%;
+    font-size: clamp(30px, 2vw, 40px);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    display: block;
+    margin-top: 1em;
+    margin-left: 0.75em;
+}
+
+.home-page .CTA-button p {
+   text-align: center;
+   font-size: clamp(16px, 1.5vw, 24px);
+   margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+    .featured-pic {
+        grid-column: 1 / 5;
+        grid-row: 4 / 7;
+    }
+
+    .home-page p {
+        grid-column: 5/ 13;
+        grid-row: 4/ 6;
+    }
+
+    .home-page .CTA-button {
+        grid-column: 5/ 7;
+        grid-row: 6 / 7;
+        margin-top: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .home-page {
+        display: block;
+        padding: 0.5em;
+    }
+
+    .profile-pic, .featured-pic {
+        width: 60%;
+        margin: 1em auto;
+    }
+
+    .home-page h1 {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .home-page h2 {
+        margin-bottom: 1.5em;
+    }
+
+    .home-page .CTA-button {
+        width: 40%;
+        margin: 1em auto;
+        padding: 0.5em;
+    }
+}
