@@ -17,7 +17,6 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ artwork }) => {
-  console.log(artwork);
   return (
     <div className='home-page'>
       <div className='profile-pic'>

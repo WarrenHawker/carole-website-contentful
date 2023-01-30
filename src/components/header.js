@@ -1,14 +1,24 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const Header = () => {
   const router = useRouter();
   const currentRoute = router.pathname;
-  console.log(currentRoute);
+  const [navShow, setNavShow] = useState(false);
   return (
     <header>
       <h1>Carole Tongue</h1>
-      <nav>
+      <div
+        id='nav-icon'
+        className={navShow ? 'open' : ''}
+        onClick={() => setNavShow(!navShow)}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav className={navShow ? 'active' : ''}>
         <Link
           className={
             currentRoute === '/' ? 'top-nav-link active' : 'top-nav-link'
