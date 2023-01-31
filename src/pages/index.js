@@ -18,12 +18,12 @@ export const getStaticProps = async () => {
 
 const Home = ({ artwork }) => {
   return (
-    <div className='home-page'>
+    <section className='home-page'>
       <div className='profile-pic'>
         <img src='carole-profile-pic.png' alt='profile picture' />
       </div>
 
-      <h1>Carole Tongue</h1>
+      <h1 className='page-title'>Carole Tongue</h1>
       <h2>spontaneous artwork in oils and acrylics</h2>
 
       <div className='featured-pic'>
@@ -44,7 +44,7 @@ const Home = ({ artwork }) => {
       <Link href='/art' className='CTA-button'>
         <p>View my work</p>
       </Link>
-    </div>
+    </section>
   );
 };
 

@@ -1,19 +1,10 @@
 .home-page {
-    display: grid;
-    padding: 2em 4em;
-    max-width: 1500px;
-    margin: auto;
     grid-template-columns: repeat(12, 8.33%);
     grid-template-rows: repeat(6, 16.6% );
 }
 
-.home-page h1 {
-    font-size: clamp(48px, 3vw, 96px);
-    font-weight: 400;
+.home-page .page-title {
     margin: 0;
-    font-family: 'GFS Didot', serif;
-    background-color: #C8A2C8;
-    color: #000000;
     grid-column: 5 / 13;
     padding-left: 0.25em;
     padding-bottom: 1.3em;
@@ -22,18 +13,10 @@
 }
 
 .home-page h2 {
-    font-family: 'PT Serif', serif;
-    color: #FBBB62;
     grid-column: 5 / 13;
-    font-weight: 700;
-    font-size: clamp(30px, 2vw, 40px);
-    margin: 0;
 }
 
 .home-page p {
-    font-family: 'Source Sans Pro', sans-serif;  
-    font-size: clamp(16px, 1.5vw, 24px);
-    margin: 0;
     grid-column: 8 / 13;
     margin-left: 1em;
 }
@@ -72,7 +55,6 @@
 
 .home-page .CTA-button p {
    text-align: center;
-   font-size: clamp(16px, 1.5vw, 24px);
    margin: 0;
 }
 
@@ -81,8 +63,17 @@
     text-decoration: none;
 }
 
-.read-more:hover, .read-more:focus, .CTA-button p:hover, .CTA-button p:focus {
+.CTA-button:hover, .CTA-button:focus {
+    filter: drop-shadow(0 0 0.75rem #FBBB62);
+    transition-duration: 0.3s;
+    cursor: pointer;
+    transform: scale(1.1)
+}
+
+.read-more:hover, .read-more:focus{
     text-decoration: underline;
+    cursor: pointer;
+    
 }
 
 @media screen and (max-width: 900px) {
@@ -110,7 +101,6 @@
 
 @media screen and (max-width: 650px) {
     .home-page {
-        display: block;
         padding: 0.5em;
     }
 
@@ -119,7 +109,7 @@
         margin: 1em auto;
     }
 
-    .home-page h1 {
+    .home-page .page-title {
         margin: 0;
         padding: 0;
         text-align: center;

@@ -1,23 +1,49 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const Header = () => {
   const router = useRouter();
   const currentRoute = router.pathname;
   const [navShow, setNavShow] = useState(false);
+
+  console.log(navShow);
+
+  const toggleNav = () => {
+    setNavShow(!navShow);
+  };
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (
+        e.target.id == 'nav-icon' ||
+        e.target.className.includes('nav-icon-span')
+      ) {
+        return;
+      }
+      setNavShow(false);
+      console.log('yes');
+    };
+
+    if (navShow) {
+      document.addEventListener('click', (e) => handleClick(e));
+    }
+  }, [navShow]);
+
   return (
     <header>
-      <h1>Carole Tongue</h1>
+      <Link href='/' className='header-title'>
+        <h1>Carole Tongue</h1>
+      </Link>
       <nav>
         <div
           id='nav-icon'
           className={navShow ? 'open' : ''}
-          onClick={() => setNavShow(!navShow)}>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          onClick={toggleNav}>
+          <span className='nav-icon-span'></span>
+          <span className='nav-icon-span'></span>
+          <span className='nav-icon-span'></span>
+          <span className='nav-icon-span'></span>
         </div>
         <div className={navShow ? 'nav-links active' : 'nav-links'}>
           <Link
