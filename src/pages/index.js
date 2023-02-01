@@ -41,7 +41,7 @@ const Home = ({ artwork }) => {
           Read More...
         </Link>
       </p>
-      <Link href='/art' className='CTA-button'>
+      <Link href='/art' className='btn CTA-button'>
         <p>View my work</p>
       </Link>
     </section>

@@ -25,17 +25,24 @@ const Artwork = ({ artwork }) => {
     { id: 'Figuratives', name: 'Figurative Paintings', selected: true },
   ]);
 
-  console.log(artwork);
-
-  const displayArtCategories = categories.map((category) => {
+  const displayArtCategories = categories.map((category, index) => {
     if (!category.selected) {
       return;
     }
     return (
-      <div className='art-category-container'>
+      <div className='art-category-container' key={index}>
         <h2>{category.name}</h2>
         {artwork
-          .filter((art) => art.fields.category == category.id)
+          .filter((art) => {
+            const title = art.fields.title.toLowerCase();
+            if (search == '') {
+              return art.fields.category == category.id;
+            } else {
+              return (
+                art.fields.category == category.id && title.includes(search)
+              );
+            }
+          })
           .map((art, index) => {
             return (
               <div className='art-card' key={index}>
@@ -44,7 +51,9 @@ const Artwork = ({ artwork }) => {
                 <div className='art-pic'>
                   <img src={art.fields.image.fields.file.url} />
                 </div>
-                <Link href=''>View Details</Link>
+                <Link href='' className='btn'>
+                  View Details
+                </Link>
               </div>
             );
           })}

@@ -23,7 +23,7 @@ const Contact = () => {
           Message <span className='required'>*</span>
         </label>
         <textarea></textarea>
-        <button>Send message</button>
+        <button className='btn'>Send message</button>
       </form>
     </section>
   );

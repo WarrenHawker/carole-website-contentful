@@ -3,6 +3,7 @@
 @import url(./pages/about.css);
 @import url(./pages/contact.css);
 @import url(./pages/artwork.css);
+@import url(./components/button.css);
 @import url('https://fonts.googleapis.com/css2?family=GFS+Didot&family=PT+Serif:wght@700&family=Source+Sans+Pro&display=swap');
 
 *, *::before, *::after {
@@ -11,6 +12,7 @@
 
 img {
     display: block;
+    width: 100%;
     margin: auto;
 }
 
@@ -60,7 +62,7 @@ h3 {
     color: #000000;
 }
 
-p, label, legend, input {
+p, label, legend, input, textarea {
     font-family: 'Source Sans Pro', sans-serif;  
     font-size: clamp(16px, 1.5vw, 24px);
 }
