@@ -1,13 +1,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const Header = () => {
   const router = useRouter();
   const currentRoute = router.pathname;
   const [navShow, setNavShow] = useState(false);
-
-  console.log(navShow);
 
   const toggleNav = () => {
     setNavShow(!navShow);
