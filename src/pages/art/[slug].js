@@ -28,6 +28,15 @@ export const getStaticProps = async ({ params }) => {
     'fields.slug': params.slug,
   });
 
+  if (!items.length) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: { artwork: items[0] },
     revalidate: 1,
@@ -47,7 +56,7 @@ const ArtworkDetails = ({ artwork }) => {
         </h1>
         <p>{artwork.fields.description}</p>
         <p>
-          <Link className='read-more' href='/contact'>
+          <Link className='text-link' href='/contact'>
             Contact me
           </Link>{' '}
           to buy this piece

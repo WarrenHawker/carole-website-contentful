@@ -53,17 +53,6 @@
    margin: 0;
 }
 
-.read-more {
-    color: #C8A2C8;
-    text-decoration: none;
-}
-
-.read-more:hover, .read-more:focus{
-    text-decoration: underline;
-    cursor: pointer;
-    
-}
-
 @media screen and (max-width: 900px) {
     .featured-pic {
         grid-column: 1 / 5;

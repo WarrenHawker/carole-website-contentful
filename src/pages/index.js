@@ -38,7 +38,7 @@ const Home = ({ artwork }) => {
         any formal art school training, I have always loved colour and how
         different artists have achieved textured multicoloured surfaces,
         particularly Sir Frank Bowling RA.{' '}
-        <Link href='/about' className='read-more'>
+        <Link href='/about' className='text-link'>
           Read More...
         </Link>
       </p>

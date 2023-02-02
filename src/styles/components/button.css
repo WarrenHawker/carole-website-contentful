@@ -13,3 +13,13 @@
     cursor: pointer;
     transform: scale(1.1)
 }
+
+.text-link {
+    color: #C8A2C8;
+    text-decoration: none;
+}
+
+.text-link:hover, .link:focus {
+    text-decoration: underline;
+    cursor: pointer;
+}
