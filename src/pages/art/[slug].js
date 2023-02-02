@@ -1,3 +1,4 @@
+import Fallback from '@/components/fallback';
 import { createClient } from 'contentful';
 import Link from 'next/link';
 
@@ -17,7 +18,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -29,11 +30,12 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: { artwork: items[0] },
+    revalidate: 1,
   };
 };
 
 const ArtworkDetails = ({ artwork }) => {
-  console.log(artwork);
+  if (!artwork) return <Fallback />;
   return (
     <section className='about-page'>
       <div className='about-pic'>

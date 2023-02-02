@@ -12,6 +12,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       artwork: response.items,
+      revalidate: 1,
     },
   };
 };
