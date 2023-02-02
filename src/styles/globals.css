@@ -4,6 +4,7 @@
 @import url(./pages/contact.css);
 @import url(./pages/artwork.css);
 @import url(./components/button.css);
+@import url(./components/footer.css);
 @import url('https://fonts.googleapis.com/css2?family=GFS+Didot&family=PT+Serif:wght@700&family=Source+Sans+Pro&display=swap');
 
 *, *::before, *::after {
@@ -67,9 +68,17 @@ p, label, legend, input, textarea {
     font-size: clamp(16px, 1.5vw, 24px);
 }
 
+.page-title p {
+    margin-top: 0;
+}
+
 @media screen and (max-width: 650px) {
     section {
         display: block;
         padding: 0.5em;
+    }
+
+    .page-title {
+        margin-top: 0.5em;
     }
 }

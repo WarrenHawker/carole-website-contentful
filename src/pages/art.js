@@ -25,6 +25,8 @@ const Artwork = ({ artwork }) => {
     { id: 'Figuratives', name: 'Figurative Paintings', selected: true },
   ]);
 
+  console.log(artwork);
+
   const displayArtCategories = categories.map((category, index) => {
     if (!category.selected) {
       return;
@@ -51,7 +53,7 @@ const Artwork = ({ artwork }) => {
                 <div className='art-pic'>
                   <img src={art.fields.image.fields.file.url} />
                 </div>
-                <Link href='' className='btn'>
+                <Link href={`/art/${art.fields.slug}`} className='btn'>
                   View Details
                 </Link>
               </div>
