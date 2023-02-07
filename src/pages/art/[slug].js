@@ -2,6 +2,12 @@ import Fallback from '@/components/fallback';
 import { createClient } from 'contentful';
 import Link from 'next/link';
 
+const formatDate = (date) => {
+  const newDate = new Date(date);
+  const options = { month: 'short', year: 'numeric' };
+  return new Intl.DateTimeFormat('en-GB', options).format(newDate);
+};
+
 const client = createClient({
   space: process.env.SPACE_ID,
   accessToken: process.env.ACCESS_TOKEN,
@@ -52,7 +58,8 @@ const ArtworkDetails = ({ artwork }) => {
       </div>
       <article className='about-info'>
         <h1 className='page-title'>
-          {artwork.fields.title} <p>{artwork.fields.createdOnDate}</p>
+          {artwork.fields.title}{' '}
+          <p>{formatDate(artwork.fields.createdOnDate)}</p>
         </h1>
         <p>{artwork.fields.description}</p>
         <p>

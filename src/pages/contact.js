@@ -1,7 +1,18 @@
+import { useState } from 'react';
+
 const Contact = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch('/api/email', {
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+      }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -28,15 +39,33 @@ const Contact = () => {
         <label htmlFor='name'>
           Name <span className='required'>*</span>
         </label>
-        <input name='name' type='text' required></input>
+        <input
+          name='name'
+          type='text'
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          required></input>
         <label htmlFor='email'>
           Email <span className='required'>*</span>
         </label>
-        <input name='email' type='email' required></input>
+        <input
+          name='email'
+          type='email'
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          required></input>
         <label htmlFor='message'>
           Message <span className='required'>*</span>
         </label>
-        <textarea></textarea>
+        <textarea
+          value={message}
+          onChange={(e) => {
+            setMessage(e.target.value);
+          }}></textarea>
         <button
           className='btn'
           onClick={(e) => {

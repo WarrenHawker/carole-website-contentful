@@ -2,6 +2,12 @@ import { createClient } from 'contentful';
 import { useState } from 'react';
 import Link from 'next/link';
 
+const formatDate = (date) => {
+  const newDate = new Date(date);
+  const options = { month: 'short', year: 'numeric' };
+  return new Intl.DateTimeFormat('en-GB', options).format(newDate);
+};
+
 export const getStaticProps = async () => {
   const client = createClient({
     space: process.env.SPACE_ID,
@@ -25,8 +31,6 @@ const Artwork = ({ artwork }) => {
     { id: 'Figuratives', name: 'Figurative Paintings', selected: true },
   ]);
 
-  console.log(artwork);
-
   const displayArtCategories = categories.map((category, index) => {
     if (!category.selected) {
       return;
@@ -49,7 +53,7 @@ const Artwork = ({ artwork }) => {
             return (
               <div className='art-card' key={index}>
                 <h3>{art.fields.title}</h3>
-                <p>{art.fields.createdOnDate}</p>
+                <p>{formatDate(art.fields.createdOnDate)}</p>
                 <div className='art-pic'>
                   <img src={art.fields.image.fields.file.url} />
                 </div>
