@@ -1,25 +1,18 @@
-const sendEmail = async () => {
-  const sgMail = require('@sendgrid/mail');
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-  const msg = {
-    to: 'warren.hawker@freedom-leisure.co.uk',
-    from: 'hawker.warren@gmail.com',
-    subject: 'Sending with SendGrid is Fun',
-    text: 'and easy to do anywhere, even with Node.js',
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-  };
-  sgMail
-    .send(msg)
-    .then(() => {
-      console.log('Email sent');
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
-
 const Contact = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch('/api/email', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    });
+    const { error } = await response.json();
+    if (error) {
+      console.log(error);
+      return;
+    }
+  };
   return (
     <section className='contact-page'>
       <article>
@@ -47,8 +40,7 @@ const Contact = () => {
         <button
           className='btn'
           onClick={(e) => {
-            e.preventDefault();
-            sendEmail();
+            handleSubmit(e);
           }}>
           Send message
         </button>
