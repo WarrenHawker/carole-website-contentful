@@ -41,16 +41,23 @@
 .home-page .CTA-button {
     grid-column: 8 / 10;
     grid-row: 5 / 6;
-    padding-top: 0.5em;
-    height: 50%;
     font-size: clamp(30px, 2vw, 40px);
-    margin-top: 1em;
-    margin-left: 0.75em;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0.5em auto;
 }
 
-.home-page .CTA-button p {
-   text-align: center;
-   margin: 0;
+.featured-pic p {
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.featured-pic p span {
+    font-weight: normal;
+    font-size: clamp(14px, 1.3vw, 20px);
+    margin-left: 1.5em;
 }
 
 @media screen and (max-width: 900px) {
@@ -97,7 +104,6 @@
     }
 
     .home-page .CTA-button {
-        width: 40%;
         margin: 1em auto;
         padding: 0.5em;
     }

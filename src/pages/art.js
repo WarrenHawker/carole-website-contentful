@@ -29,6 +29,7 @@ const Artwork = ({ artwork }) => {
     { id: 'Abstracts', name: 'Abstract Paintings', selected: true },
     { id: 'Drip Paintings', name: 'Drip Paintings', selected: true },
     { id: 'Figuratives', name: 'Figurative Paintings', selected: true },
+    { id: 'Christmas', name: 'Christmas Cards', selected: true },
   ]);
 
   const displayArtCategories = categories.map((category, index) => {

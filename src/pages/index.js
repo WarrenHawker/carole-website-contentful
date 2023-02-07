@@ -1,13 +1,22 @@
 import { createClient } from 'contentful';
 import Link from 'next/link';
 
+const formatDate = (date) => {
+  const newDate = new Date(date);
+  const options = { month: 'short', year: 'numeric' };
+  return new Intl.DateTimeFormat('en-GB', options).format(newDate);
+};
+
 export const getStaticProps = async () => {
   const client = createClient({
     space: process.env.SPACE_ID,
     accessToken: process.env.ACCESS_TOKEN,
   });
 
-  const response = await client.getEntries({ content_type: 'artwork' });
+  const response = await client.getEntries({
+    content_type: 'artwork',
+    'fields.frontPageImage': true,
+  });
 
   return {
     props: {
@@ -28,7 +37,14 @@ const Home = ({ artwork }) => {
       <h2>spontaneous artwork in oils and acrylics</h2>
 
       <div className='featured-pic'>
-        <img src='featured-art.png' alt='featured artwork' />
+        <img
+          src={artwork[0].fields.image.fields.file.url}
+          alt='featured artwork'
+        />
+        <p>
+          {artwork[0].fields.title}{' '}
+          <span>{formatDate(artwork[0].fields.createdOnDate)}</span>
+        </p>
       </div>
 
       <p>
@@ -41,10 +57,10 @@ const Home = ({ artwork }) => {
         <Link href='/about' className='text-link'>
           Read More...
         </Link>
+        <Link href='/art' className='btn CTA-button'>
+          View my work
+        </Link>
       </p>
-      <Link href='/art' className='btn CTA-button'>
-        <p>View my work</p>
-      </Link>
     </section>
   );
 };

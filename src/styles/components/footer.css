@@ -11,6 +11,7 @@ footer {
 
 footer nav {
     display: block;
+    margin-top: 0;
 }
 
 .footer-nav-link {

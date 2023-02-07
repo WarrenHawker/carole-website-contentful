@@ -18,12 +18,9 @@ img {
     margin: auto;
 }
 
-.layout{
-    background-color: #ffffff;
-}
-
 body {
-    margin: 0;
+    margin: 0; 
+    background-color: #ffffff;
 }
 
 main {

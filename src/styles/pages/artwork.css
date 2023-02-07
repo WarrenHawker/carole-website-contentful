@@ -47,7 +47,6 @@
 }
 
 .art-page .art-pic {
-    max-width: 400px;
     margin: auto;
 }
 
@@ -55,6 +54,9 @@
     border: 1px solid black;
     padding: 1em;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    position: relative;
+    height: 500px;
+    width: 250px;
 }
 
 .art-card p {
@@ -68,7 +70,10 @@
     max-width: 200px;
     margin: 1em auto 0 auto;
     font-size: clamp(16px, 1.5vw, 24px);
-
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0
 }
 
 
