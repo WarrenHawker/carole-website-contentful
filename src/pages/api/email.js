@@ -1,5 +1,5 @@
 import sendgrid from '@sendgrid/mail';
-import isEmail from 'validator/lib/isemail';
+import isEmail from 'validator/lib/isEmail';
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sendEmails = async (req, res) => {
