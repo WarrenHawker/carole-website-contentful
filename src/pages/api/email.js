@@ -1,8 +1,30 @@
 import sendgrid from '@sendgrid/mail';
+import isEmail from 'validator/lib/isemail';
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sendEmails = async (req, res) => {
   const { name, email, message } = req.body;
+  const emptyFields = [];
+  if (!name) {
+    emptyFields.push('name');
+  }
+  if (!email) {
+    emptyFields.push('email');
+  }
+  if (!message) {
+    emptyFields.push('message');
+  }
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ emptyFields, error: 'Please fill in all fields' });
+  }
+  if (!isEmail(email)) {
+    return res
+      .status(400)
+      .json({ emptyFields, error: 'Please enter a valid email' });
+  }
+
   const msgToCustomer = {
     to: email,
     from: process.env.ADMIN_FROM_EMAIL,
@@ -34,8 +56,9 @@ const sendEmails = async (req, res) => {
     await sendgrid.send(msgToCustomer);
     await sendgrid.send(msgToAdmin);
   } catch (error) {
-    return res.send(200).json({ error: error.message });
+    return res.status(400).json({ error: error.message });
   }
+  return res.status(200).json({ message: 'email sent' });
 };
 
 export default sendEmails;

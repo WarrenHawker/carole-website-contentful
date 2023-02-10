@@ -54,6 +54,23 @@
     color: red;
 }
 
+.error {
+    text-align: center;
+    margin: 0.5em auto !important;
+    color: red;
+    border: 1px solid red;
+    width: 100%;
+    max-width: 400px !important;
+}
+
+.invalid {
+    border: 2px solid red;
+}
+
+.contact-form h3 {
+    margin-top: 3em;
+}
+
 @media screen and (max-width: 900px) {
     .contact-page {
         display: block;
@@ -66,4 +83,9 @@
     .contact-form {
         margin: 0;
     }
+
+    .contact-form h3 {
+        margin: auto;
+    }
 }
+
