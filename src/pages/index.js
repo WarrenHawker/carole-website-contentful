@@ -30,7 +30,7 @@ const Home = ({ artwork }) => {
   return (
     <section className='home-page'>
       <div className='profile-pic'>
-        <img src='carole-profile-pic.png' alt='profile picture' />
+        <img src='carole-profile-pic-2.jpg' alt='profile picture' />
       </div>
 
       <h1 className='page-title'>Carole Tongue</h1>
