@@ -1,5 +1,5 @@
 import { createClient } from 'contentful';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const formatDate = (date) => {
@@ -25,12 +25,28 @@ export const getStaticProps = async () => {
 
 const Artwork = ({ artwork }) => {
   const [search, setSearch] = useState('');
-  const [categories, setCategories] = useState([
-    { id: 'Abstracts', name: 'Abstract Paintings', selected: true },
-    { id: 'Drip Paintings', name: 'Drip Paintings', selected: true },
-    { id: 'Figuratives', name: 'Figurative Paintings', selected: true },
-    { id: 'Christmas', name: 'Christmas Cards', selected: true },
-  ]);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    let newCategories = [];
+    artwork.forEach((art) => {
+      if (!newCategories.includes(art.fields.category[0])) {
+        newCategories.push(art.fields.category[0]);
+      } else return;
+    });
+    setCategories(() => {
+      return newCategories.map((item) => {
+        return {
+          name: item,
+          selected: true,
+        };
+      });
+    });
+  };
 
   const displayArtCategories = categories.map((category, index) => {
     if (!category.selected) {
@@ -43,10 +59,10 @@ const Artwork = ({ artwork }) => {
           .filter((art) => {
             const title = art.fields.title.toLowerCase();
             if (search == '') {
-              return art.fields.category == category.id;
+              return art.fields.category == category.name;
             } else {
               return (
-                art.fields.category == category.id && title.includes(search)
+                art.fields.category == category.name && title.includes(search)
               );
             }
           })
@@ -68,16 +84,18 @@ const Artwork = ({ artwork }) => {
     );
   });
 
+  console.log(categories);
+
   const displayCategoriesFilter = categories.map((category, index) => {
     return (
       <div key={index}>
         <input
           type='checkbox'
-          name={category.id}
+          name={category.name}
           onChange={(e) => filterCategories(e)}
           checked={category.selected}
         />
-        <label htmlFor={category.id}>{category.name}</label>
+        <label htmlFor={category.name}>{category.name}</label>
       </div>
     );
   });
@@ -85,7 +103,7 @@ const Artwork = ({ artwork }) => {
   const filterCategories = (e) => {
     setCategories((prevState) => {
       return prevState.map((item) => {
-        if (e.target.name == item.id) {
+        if (e.target.name == item.name) {
           return { ...item, selected: !item.selected };
         } else return { ...item };
       });
