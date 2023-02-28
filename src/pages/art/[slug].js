@@ -1,6 +1,7 @@
 import Fallback from '@/components/fallback';
 import { createClient } from 'contentful';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 const formatDate = (date) => {
   const newDate = new Date(date);
@@ -34,6 +35,10 @@ export const getStaticProps = async ({ params }) => {
     'fields.slug': params.slug,
   });
 
+  const reponse = await client.getEntries({
+    content_type: 'artwork',
+  });
+
   if (!items.length) {
     return {
       redirect: {
@@ -44,15 +49,37 @@ export const getStaticProps = async ({ params }) => {
   }
 
   return {
-    props: { artwork: items[0] },
+    props: {
+      slugsArray: reponse.items.map((item) => item.fields.slug),
+      artwork: items[0],
+    },
     revalidate: 1,
   };
 };
 
-const ArtworkDetails = ({ artwork }) => {
+const ArtworkDetails = ({ artwork, slugsArray }) => {
+  const [prevSlug, setPrevSlug] = useState();
+  const [nextSlug, setNextSlug] = useState();
+
+  useEffect(() => {
+    setPrevSlug(slugsArray[slugsArray.indexOf(artwork.fields.slug) - 1]);
+    setNextSlug(slugsArray[slugsArray.indexOf(artwork.fields.slug) + 1]);
+  }, [slugsArray]);
   if (!artwork) return <Fallback />;
   return (
     <section className='about-page'>
+      <div className='next-prev-buttons'>
+        {prevSlug ? (
+          <Link className='btn' href={`/art/${prevSlug}`}>
+            Previous piece
+          </Link>
+        ) : null}
+        {nextSlug ? (
+          <Link className='btn' href={`/art/${nextSlug}`}>
+            Next piece
+          </Link>
+        ) : null}
+      </div>
       <div className='about-pic'>
         <img src={artwork.fields.image.fields.file.url} alt='' />
       </div>

@@ -23,3 +23,16 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+.next-prev-buttons {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2em;
+}
+
+.next-prev-buttons .btn {
+    padding: 1em;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+}
