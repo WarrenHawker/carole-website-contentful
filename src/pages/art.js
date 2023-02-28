@@ -84,8 +84,6 @@ const Artwork = ({ artwork }) => {
     );
   });
 
-  console.log(categories);
-
   const displayCategoriesFilter = categories.map((category, index) => {
     return (
       <div key={index}>
@@ -112,7 +110,7 @@ const Artwork = ({ artwork }) => {
   return (
     <section className='art-page'>
       <h1 className='page-title'>Artwork for sale</h1>
-      <h2>Prices available on request</h2>
+      {/* <h2>Prices available on request</h2> */}
       <div className='inputs-container'>
         <div className='search-input'>
           <label htmlFor='search'>Search artwork</label>

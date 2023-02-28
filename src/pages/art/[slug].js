@@ -62,12 +62,12 @@ const ArtworkDetails = ({ artwork }) => {
           <p>{formatDate(artwork.fields.createdOnDate)}</p>
         </h1>
         <p>{artwork.fields.description}</p>
-        <p>
+        {/* <p>
           <Link className='text-link' href='/contact'>
             Contact me
           </Link>{' '}
           to buy this piece
-        </p>
+        </p> */}
       </article>
     </section>
   );

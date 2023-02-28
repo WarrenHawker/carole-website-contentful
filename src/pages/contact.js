@@ -8,8 +8,6 @@ const Contact = () => {
   const [emptyFields, setEmptyFields] = useState([]);
   const [formSent, setFormSent] = useState(false);
 
-  console.log(formSent);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch('/api/email', {
