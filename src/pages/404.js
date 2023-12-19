@@ -14,7 +14,7 @@ const PageNotFound = () => {
   return (
     <section className='page-not-found'>
       <h2>404</h2>
-      <h3>I'm sorry, that page cannot be found</h3>
+      <h3>I'm sorry, that page cannot be found!</h3>
       <p>
         Redirecting to{' '}
         <Link href='/' className='text-link'>
